@@ -126,26 +126,23 @@ function CardClass:draw()
   if self.faceUp then
     local col = (self.id) % SPRITESHEET_COLUMNS
     local row = math.floor((self.id) / SPRITESHEET_COLUMNS)
-
     local x = col * Constants.CARD_WIDTH
     local y = row * Constants.CARD_HEIGHT
-    
     quad = love.graphics.newQuad(x, y, Constants.CARD_WIDTH, Constants.CARD_HEIGHT, spritesheet:getDimensions())
   else
     -- Back img at [0, 0]
     local x = 0 * Constants.CARD_WIDTH
     local y = 0 * Constants.CARD_HEIGHT
-    
     quad = love.graphics.newQuad(x, y, Constants.CARD_WIDTH, Constants.CARD_HEIGHT, spritesheet:getDimensions())
   end
   
   love.graphics.draw(spritesheet, quad, self.position.x, self.position.y)
-  love.graphics.setColor(0, 0, 0, 1)
 
-  if text then
-    love.graphics.printf(tostring(self.name), Constants.WINDOW_WIDTH / 2 - 600, Constants.WINDOW_HEIGHT - 200, 200)
-    love.graphics.printf(tostring(self.text), Constants.WINDOW_WIDTH / 2 - 600, Constants.WINDOW_HEIGHT - 150, 300)
+  if self.state == CARD_STATE.SELECTED and self.faceUp then
+    self:drawEnlargedCard()
   end
+
+  love.graphics.setColor(0, 0, 0, 1)
 
   font = love.graphics.newFont("assets/slkscr.ttf", 20)
   love.graphics.setFont(font)
@@ -156,6 +153,65 @@ function CardClass:draw()
     love.graphics.print("SELECTED", self.position.x + 5, self.position.y - 30)
   end
   love.graphics.setColor(0, 0, 0, 1)
+end
+
+function CardClass:drawEnlargedCard()
+  local scale = 2.5
+  local enlargedWidth = Constants.CARD_WIDTH * scale
+  local enlargedHeight = Constants.CARD_HEIGHT * scale
+  
+  local enlargedX = Constants.WINDOW_WIDTH / 2 - 600
+  local enlargedY = (Constants.WINDOW_HEIGHT - enlargedHeight) / 2
+  
+  -- Draw selection glow
+  love.graphics.setColor(0.2, 0.8, 1, 0.8) -- Blue glow
+  love.graphics.setLineWidth(6)
+  love.graphics.rectangle("line", enlargedX - 10, enlargedY - 10, enlargedWidth + 20, enlargedHeight + 20, Constants.CARD_RADIUS * scale, Constants.CARD_RADIUS * scale)
+  
+  -- Draw enlarged card
+  love.graphics.setColor(1, 1, 1, 1)
+  local col = (self.id) % SPRITESHEET_COLUMNS
+  local row = math.floor((self.id) / SPRITESHEET_COLUMNS)
+  local x = col * Constants.CARD_WIDTH
+  local y = row * Constants.CARD_HEIGHT
+  local quad = love.graphics.newQuad(x, y, Constants.CARD_WIDTH, Constants.CARD_HEIGHT, spritesheet:getDimensions())
+  
+  love.graphics.draw(spritesheet, quad, enlargedX, enlargedY, 0, scale, scale)
+
+  self:drawCardInfo(enlargedX, enlargedY, enlargedWidth, enlargedHeight)
+end
+
+function CardClass:drawCardInfo(cardX, cardY, cardWidth, cardHeight)
+  local titleFont = love.graphics.newFont("assets/slkscr.ttf", 24)
+  local infoFont = love.graphics.newFont("assets/slkscr.ttf", 18)
+  local descFont = love.graphics.newFont("assets/slkscr.ttf", 16)
+  
+  local textX = cardX
+  local textY = cardY + cardHeight + 30
+  local textWidth = cardWidth
+  
+  -- Card name
+  love.graphics.setColor(1, 1, 1, 1)
+  love.graphics.setFont(titleFont)
+  love.graphics.printf(self.name, textX, textY, textWidth, "center")
+  textY = textY + 30
+  
+  -- Card stats (cost, power, type)
+  love.graphics.setFont(infoFont)
+  love.graphics.setColor(0.2, 0.8, 1, 1) -- Blue glow
+  local statsText = string.format("Cost: %d  |  Base Power: %d Type: %s", self.cost, self.basePower, self.type)
+  love.graphics.printf(statsText, textX, textY, textWidth, "center")
+  textY = textY + 45
+
+  -- Current power
+  love.graphics.setColor(1, 0.8, 0.2, 1) -- Gold
+  love.graphics.printf(string.format("Current Power: %d", self.power), textX, textY, textWidth, "center")
+  textY = textY + 30
+
+  -- Card description
+  love.graphics.setFont(descFont)
+  love.graphics.setColor(0.9, 0.9, 0.9, 1)
+  love.graphics.printf(self.text, textX + 10, textY, textWidth - 20, "left")
 end
 
 function CardClass:setFaceUp()

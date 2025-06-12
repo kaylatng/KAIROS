@@ -29,7 +29,10 @@ function ManaClass:draw()
   love.graphics.circle("fill",
     self.position.x, self.position.y,
     self.size.x, self.size.y)
-  love.graphics.setColor(0, 0, 0, 1)
+  love.graphics.setColor(1, 1, 1, 1)
+  love.graphics.circle("line",
+    self.position.x, self.position.y,
+    self.size.x, self.size.y)
   love.graphics.printf(tostring(self.mp), Constants.BUTTON_X, self.position.y - 9, Constants.BUTTON_X + self.size.x, "center")
 end
 

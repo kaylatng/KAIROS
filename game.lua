@@ -29,7 +29,7 @@ function GameManager:new()
   game.round = 0
   game.roundStart = false
 
-  game.endTurnButton = ButtonClass:new(game.state)
+  game.endTurnButton = ButtonClass:new(Constants.GAME_STATE.YOUR_TURN)
   game.canDraw = false
   game.winner = nil
   game.won = false
@@ -38,7 +38,7 @@ function GameManager:new()
   game.titleFont = love.graphics.newFont("assets/slkscr.ttf", 48)
   game.subtitleFont = love.graphics.newFont("assets/slkscr.ttf", 24)
   game.menuFont = love.graphics.newFont("assets/slkscr.ttf", 18)
-  game.startButton = ButtonClass:new(Constants.GAME_STATE.TITLE_SCREEN, "Start Game")
+  game.startButton = ButtonClass:new(Constants.GAME_STATE.TITLE_SCREEN, "start")
   game.titleAlpha = 0
   game.titleFadeSpeed = 2
 
@@ -69,7 +69,7 @@ function GameManager:initialize()
   self:dealCards(deck, hand, self.piles, "player")
 
   for i = 1, 3 do
-    local boardPile = BoardPile:new(700 + (i-1) * 130, 400, i)
+    local boardPile = BoardPile:new(780 + (i-1) * 130, 400, i)
     table.insert(self.piles, boardPile)
   end
 
@@ -93,7 +93,7 @@ function GameManager:initialize()
   self:dealCards(aiDeck, aiHand, self.piles, "ai")
 
   for i = 1, 3 do
-    local aiBoardPile = BoardPile:new(700 + (i-1) * 130, 80, i, "ai")
+    local aiBoardPile = BoardPile:new(780 + (i-1) * 130, 80, i, "ai")
     table.insert(self.piles, aiBoardPile)
   end
 
@@ -216,7 +216,7 @@ function GameManager:updateTitleScreen(dt)
   local buttonWidth = 200
   local buttonHeight = 60
   local centerX = Constants.WINDOW_WIDTH / 2
-  local centerY = Constants.WINDOW_HEIGHT / 2 + 200
+  local centerY = Constants.WINDOW_HEIGHT / 2 + 130
   
   self.startButton.x = centerX - buttonWidth / 2
   self.startButton.y = centerY - buttonHeight / 2
@@ -312,19 +312,19 @@ function GameManager:drawTitleScreen()
   love.graphics.setFont(self.titleFont)
   local titleText = "KAIROS"
   local titleWidth = self.titleFont:getWidth(titleText)
-  love.graphics.print(titleText, Constants.WINDOW_WIDTH/2 - titleWidth/2, Constants.WINDOW_HEIGHT/2 - 150)
+  love.graphics.print(titleText, Constants.WINDOW_WIDTH/2 - titleWidth/2, Constants.WINDOW_HEIGHT/2 - 200)
 
   -- Subtitle
   love.graphics.setFont(self.subtitleFont)
   local subtitleText = "Casual Collectable Card Game"
   local subtitleWidth = self.subtitleFont:getWidth(subtitleText)
-  love.graphics.print(subtitleText, Constants.WINDOW_WIDTH/2 - subtitleWidth/2, Constants.WINDOW_HEIGHT/2 - 90)
+  love.graphics.print(subtitleText, Constants.WINDOW_WIDTH/2 - subtitleWidth/2, Constants.WINDOW_HEIGHT/2 - 125)
 
   -- Game description
   love.graphics.setFont(self.menuFont)
   love.graphics.setColor(0.9, 0.9, 0.9, self.titleAlpha * 0.8)
   local instructions = {
-    "Kairos (n): The right or critical moment",
+    "Kairos: A propitious moment for decision or action",
     "Play cards strategically to win rounds",
     "First to 25 points wins!",
     "",
@@ -333,7 +333,7 @@ function GameManager:drawTitleScreen()
   
   for i, line in ipairs(instructions) do
     local lineWidth = self.menuFont:getWidth(line)
-    love.graphics.print(line, Constants.WINDOW_WIDTH/2 - lineWidth/2, Constants.WINDOW_HEIGHT/2 - 20 + (i-1) * 25)
+    love.graphics.print(line, Constants.WINDOW_WIDTH/2 - lineWidth/2, Constants.WINDOW_HEIGHT/2 - 65 + (i-1) * 25)
   end
 
   if self.titleAlpha >= 1 then
@@ -456,7 +456,7 @@ end
 
 function GameManager:startGame()
   self.state = Constants.GAME_STATE.YOUR_TURN
-  -- self:initialize()
+  self:initialize()
 end
 
 function GameManager:getPileAt(mousePos)

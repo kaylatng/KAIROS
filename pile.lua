@@ -231,6 +231,7 @@ end
 
 function DeckPile:draw()
   love.graphics.setColor(0, 0, 0, 0.3)
+  love.graphics.setLineWidth(2)
   love.graphics.rectangle("line", self.position.x - Constants.PADDING_X, self.position.y - Constants.PADDING_Y, Constants.PILE_WIDTH, Constants.PILE_HEIGHT, Constants.PILE_RADIUS, Constants.PILE_RADIUS)
   
   if #self.cards > 0 then
