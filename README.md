@@ -1,4 +1,4 @@
-# 3CG
+# KAIROS
 
 CMPM 121 Assignment 3\
 Name: Kayla Nguyen\
