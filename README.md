@@ -2,7 +2,8 @@
 
 CMPM 121 Assignment 4\
 Name: Kayla Nguyen\
-Game Title: _KAIROS_
+Game Title: _KAIROS_\
+Download Link (could not get the browser hosting to work, so please download the .love file under deliverables/KAIROS.love): https://yuuth.itch.io/kairos
 
 ## INTRODUCTION
 
@@ -37,7 +38,7 @@ Comments: Instead of outlining each valid location, highlight them or fill them 
 
 ### POSTMORTEM
 
-Please see document titled "postmortem.pdf"
+Please see document titled "deliverables/postmortem.pdf"
 
 ### ASSETS
 
