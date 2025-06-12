@@ -46,7 +46,7 @@ function love.mousereleased(x, y, button)
 end
 
 function love.keypressed(key)
-  if key == "q" then
+  if key == "q" or key == "escape" then
     -- Quit game
     love.event.quit()
   elseif key == "r" then

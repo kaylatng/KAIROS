@@ -14,7 +14,7 @@ local Constants = {
   CARD_RADIUS = 8,
 
   WINDOW_WIDTH = 1920,
-  WINDOW_HEIGHT = 1020,
+  WINDOW_HEIGHT = 1080,
 
   BUTTON_X = 37,
   BUTTON_Y = 740,

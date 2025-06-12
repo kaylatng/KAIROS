@@ -328,7 +328,7 @@ function GameManager:drawTitleScreen()
     "Play cards strategically to win rounds",
     "First to 25 points wins!",
     "",
-    "Click Start Game to begin"
+    "Click Start Game to begin | Q or esc to quit | R to restart"
   }
   
   for i, line in ipairs(instructions) do
