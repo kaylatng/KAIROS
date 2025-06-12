@@ -1,8 +1,8 @@
 # KAIROS
 
-CMPM 121 Assignment 3\
+CMPM 121 Assignment 4\
 Name: Kayla Nguyen\
-Game Title: _Kairos_\
+Game Title: _KAIROS_\
 Playable Browser Link: https://yuuth.itch.io/
 
 ## INTRODUCTION
@@ -38,7 +38,7 @@ Comments: Instead of outlining each valid location, highlight them or fill them 
 
 ### POSTMORTEM
 
-Please see document titled "postmortem.txt"
+Please see document titled "postmortem.pdf"
 
 ### ASSETS
 
