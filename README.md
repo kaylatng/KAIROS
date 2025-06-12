@@ -2,7 +2,8 @@
 
 CMPM 121 Assignment 3\
 Name: Kayla Nguyen\
-Game Title: _Kairos (3CG)_
+Game Title: _Kairos_\
+Playable Browser Link: https://yuuth.itch.io/
 
 ## INTRODUCTION
 
@@ -37,11 +38,7 @@ Comments: Instead of outlining each valid location, highlight them or fill them 
 
 ### POSTMORTEM
 
-A postmortem on what you did well and what you would do differently if you were to do this project over again (maybe some programming patterns that might have been a better fit?).
-
-One main change I made between this 3CG and the Solitaire project is creating a selector instead of using a grabber. I found the usage of a selector was more intuitive than dragging cards to each board pile. I am satisfied with my selector implementation and how it interacts with the cards in the 3CG. I also believe the hover animations for the cards was a feature that enhanced the user experience in my game. When a user hovers over a card, the card's position moves up to show the player which card they will select if they press the mouse key. I also believe my card data file was implemented well, but can be improved on by turning it into a json or csv file.
-
-If I were to revisit this project or redo it, I would add SFX and more visual indicators to show when a card effect is active. I also would like to explore different board layouts. I currently have the board grouped at the top, but would want to change the layout if I were to redo this project.
+Please see document titled "postmortem.txt"
 
 ### ASSETS
 
