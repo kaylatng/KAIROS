@@ -2,8 +2,7 @@
 
 CMPM 121 Assignment 4\
 Name: Kayla Nguyen\
-Game Title: _KAIROS_\
-Playable Browser Link: https://yuuth.itch.io/
+Game Title: _KAIROS_
 
 ## INTRODUCTION
 
