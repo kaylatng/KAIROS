@@ -351,11 +351,6 @@ function GameManager:drawTitleScreen()
       self.startButton.x + self.startButton.width/2 - textWidth/2,
       self.startButton.y + self.startButton.height/2 - textHeight/2)
   end
-
-  -- Version/credits
-  love.graphics.setFont(self.menuFont)
-  love.graphics.setColor(0.7, 0.7, 0.7, self.titleAlpha * 0.6)
-  love.graphics.print("v1.0", 20, Constants.WINDOW_HEIGHT - 30)
 end
 
 function GameManager:mousePressed(x, y, button)
@@ -694,31 +689,6 @@ function GameManager:checkForWin()
     end
   end
   return false
-end
-
--- Add method to reset game for "play again" functionality
-function GameManager:resetGame()
-  -- Clear all game data
-  self.piles = {}
-  self.manas = {}
-  self.scores = {}
-  self.selector = SelectorClass:new()
-  self.isInitialized = false
-  self.moves = 0
-  self.won = false
-  self.state = Constants.GAME_STATE.TITLE_SCREEN
-  self.round = 0
-  self.roundStart = false
-  self.winner = nil
-  self.titleAlpha = 0
-  
-  -- Reset AI variables
-  self.aiState = Constants.AI_STATE.IDLE
-  self.aiTimer = self.aiDuration
-  
-  -- Reset attack variables
-  self.cardsRevealed = false
-  self.attackTimer = self.attackDuration
 end
 
 function shuffle(deck)
