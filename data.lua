@@ -92,6 +92,14 @@ local Data = {
     text = "When Revealed: Gain +1 mana next turn.",
     id = 11,
   },
+  {
+    name = "Helios",
+    util = "end-turn",
+    cost = 2,
+    power = 7,
+    text = "End of Turn: Discard this.",
+    id = 12,
+  },
 }
 
 return Data

@@ -305,6 +305,10 @@ function CardClass:onEndTurn(gameManager)
   if self.name == "Icarus" then
     return self:icarusEffect()
   end
+
+  if self.name == "Helios" then
+    return self:heliosEffect()
+  end
   
   return false
 end
@@ -496,6 +500,11 @@ function CardClass:icarusEffect()
   end
   
   return false
+end
+
+function CardClass:heliosEffect()
+  -- End of Turn: Discard this.
+  return true
 end
 
 function CardClass:getOwner(gameManager)

@@ -668,14 +668,22 @@ function GameManager:endTurn()
     mana:resetBonusMana()
   end
 
+  local boardPile, owner, discardPile
   for _, pile in ipairs(self.piles) do
     if pile.type == "board" then
       local boardPile = pile
       for _, card in ipairs(pile.cards) do
         if card.type == "end-turn" then
           if card:onEndTurn(self) then
+            owner = boardPile.owner
+            for _, pile2 in ipairs(self.piles) do
+              if pile2.type == "discard" and pile2.owner == owner then
+                discardPile = pile2
+              end
+            end
             boardPile:removeCard(card)
             discardPile:addCard(card)
+            card:setFaceDown()
           end
         end
       end
