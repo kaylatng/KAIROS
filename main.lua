@@ -22,7 +22,15 @@ function love.load()
 
   font = love.graphics.newFont("assets/slkscr.ttf", 18)
   love.graphics.setFont(font)
+
+  bgm = love.audio.newSource("assets/sfx/bgm.wav", "stream")
+  bgm:setVolume(0.8)
+  bgm:setLooping(true)
   
+  if not bgm:isPlaying() then
+    love.audio.play(bgm)
+  end
+
   -- math.randomseed(os.time())
   
   game = GameManager:new()
@@ -48,10 +56,12 @@ end
 function love.keypressed(key)
   if key == "q" or key == "escape" then
     -- Quit game
+    love.audio.play(bgm)
     love.event.quit()
   elseif key == "r" then
     -- Restart game
     game = GameManager:new()
+    love.audio.play(bgm)
     game:initialize()
   end
 end

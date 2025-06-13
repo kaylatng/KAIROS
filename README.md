@@ -11,30 +11,7 @@ _Description from canvas assignment._ This project's goal is to make a CCCG (Cas
 
 ## IMPLEMENTATION
 
-### PROGRAMMING PATTERNS
-
-State Pattern - Used for game states (ex: YOUR_TURN, AI_TURN), card states (ex: IDLE, MOUSE_OVER, SELECTED), and button states (IDLE, PRESSED).
-
-Component Pattern - Game objects (card, pile, button) use component systems (position vect or, rendering/drawing every frame, behavior functions).
-
-Object Pool Pattern - Cards are created once in initialize and moved between card piles (board, hand, deck) instead of being created/destroyed every frame.
-
-Command Pattern - The selector system is used for card selection and placement actions with location validation checks. Takes input from mouse buttons.
-
-Observer Pattern - Valid location highlighting automatically updates when a card is selected.
-
-Flyweight Pattern - Card data templates in the Data.lua file are shared between card instances. One single sprite file is used for all card faces.
-
-Factory Pattern - Deck creation creates card instances from data templates.
-
-### FEEDBACK
-
-Reviewer 1: Maddison Lobo \
-Comments: Reduce cconditional logic repitition, some if/else statements are repeated in mousePressed and attack logic. Create disabled button visual to indicate player cannot press it during AI turn.\
-Reviewer 2: Crystal Tran \
-Comments: Show pile power totals on top of each pile. Make a symbol on player cards to show how much power each card has. \
-Reviewer 3: Mitchell Pham \
-Comments: Instead of outlining each valid location, highlight them or fill them in with a specific color to draw player attention to these spots.
+For programming patterns and feedback, see https://github.com/kaylatng/CMPM121-3CG (since this assignment did not ask to include these elements).
 
 ### POSTMORTEM
 
@@ -44,5 +21,10 @@ Please see document titled "deliverables/postmortem.pdf"
 
 Sprites: All art is made by me. \
 Font: https://www.dafont.com/golden-sun.font \
-SFX: N/A
-MUSIC: N/A
+MUSIC: https://freesound.org/people/TheLastOneOnEarth/sounds/737568/ \
+SFX: \
+&ensp; jingle_win_synth_06.wav: https://freesound.org/people/LittleRobotSoundFactory/sounds/274181/ \
+&ensp; chiptune_jingle_01.ogg: https://freesound.org/people/AndreWharn/sounds/501207/ \
+&ensp; chiptune_jingle_02.ogg: https://freesound.org/people/AndreWharn/sounds/501211/ 
+
+Thank you for playing!☻
