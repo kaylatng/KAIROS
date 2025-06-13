@@ -39,7 +39,6 @@ end
 
 function SelectorClass:calculateValidTargets()
   self.validTargets = {}
-  -- TODO: change valid targets
 end
 
 function SelectorClass:isValidTarget(pile)

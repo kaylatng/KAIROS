@@ -51,7 +51,7 @@ function PileClass:draw()
   -- Outline
   if self.type ~= "hand" then 
     if self.highlighted then
-      love.graphics.setColor(0.2, 0.8, 0.2, 0.8) -- Bright green border for valid targets
+      love.graphics.setColor(0.2, 0.8, 0.2, 0.8) -- Bright green
       love.graphics.setLineWidth(3)
     else
       love.graphics.setColor(0, 0, 0, 0.3)

@@ -24,7 +24,6 @@ function GameManager:new()
   game.selector = SelectorClass:new()
   game.isInitialized = false
   game.moves = 0
-  game.won = false
   game.state = Constants.GAME_STATE.TITLE_SCREEN
   game.round = 0
   game.roundStart = false
@@ -692,6 +691,8 @@ function GameManager:endTurn()
 end
 
 function GameManager:checkForWin()
+  if self.won then return end
+
   for _, score in ipairs(self.scores) do
     if score.owner == "player" and score.value >= 25 then
       self.winner = "player"

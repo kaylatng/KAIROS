@@ -1,7 +1,3 @@
--- Kayla Nguyen
--- CMPM 121 - 3CG
--- 5-19-25
-
 -- Main
 
 io.stdout:setvbuf("no")
@@ -31,7 +27,7 @@ function love.load()
     love.audio.play(bgm)
   end
 
-  -- math.randomseed(os.time())
+  math.randomseed(os.time())
   
   game = GameManager:new()
   game:initialize()

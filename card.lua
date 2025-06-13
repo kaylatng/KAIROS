@@ -199,7 +199,7 @@ function CardClass:drawCardInfo(cardX, cardY, cardWidth, cardHeight)
   -- Card stats (cost, power, type)
   love.graphics.setFont(infoFont)
   love.graphics.setColor(0.2, 0.8, 1, 1) -- Blue glow
-  local statsText = string.format("Cost: %d  |  Base Power: %d Type: %s", self.cost, self.basePower, self.type)
+  local statsText = string.format("Cost: %d  |  Base Power: %d | Type: %s", self.cost, self.basePower, self.type)
   love.graphics.printf(statsText, textX, textY, textWidth, "center")
   textY = textY + 45
 
