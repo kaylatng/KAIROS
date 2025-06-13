@@ -3,7 +3,7 @@
 CMPM 121 Assignment 4\
 Name: Kayla Nguyen\
 Game Title: _KAIROS_\
-Download Link (could not get the browser hosting to work, so please download the .love file under deliverables/KAIROS.love or use this itch.io link): https://yuuth.itch.io/kairos
+Download Link (could not get the browser hosting to work, so please download the .love file under deliverables/KAIROS.love or use this itch.io link): https://yuuth.itch.io/kairos password is cmpm121
 
 ## INTRODUCTION
 
