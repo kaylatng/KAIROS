@@ -30,9 +30,12 @@ function GameManager:new()
   game.roundStart = false
 
   game.endTurnButton = ButtonClass:new(Constants.GAME_STATE.YOUR_TURN)
+  game.endTurnSFX = love.audio.newSource("assets/sfx/chiptune_jingle_01.ogg", "static")
   game.canDraw = false
   game.winner = nil
   game.won = false
+  game.wonSFX = love.audio.newSource("assets/sfx/jingle_win_synth_06.wav", "static")
+  game.loseSFX = love.audio.newSource("assets/sfx/8bit_fall.wav", "static")
 
   -- Title screen elements
   game.titleFont = love.graphics.newFont("assets/slkscr.ttf", 48)
@@ -41,6 +44,7 @@ function GameManager:new()
   game.startButton = ButtonClass:new(Constants.GAME_STATE.TITLE_SCREEN, "start")
   game.titleAlpha = 0
   game.titleFadeSpeed = 2
+  game.startSFX = love.audio.newSource("assets/sfx/chiptune_jingle_02.ogg", "static")
 
   -- AI turn variables
   game.aiDuration = 1
@@ -372,7 +376,8 @@ function GameManager:mousePressed(x, y, button)
   -- Check end turn button
   if self.endTurnButton:checkForMouseOver(mousePos) then
     if self.endTurnButton:mousePressed() and self.state == Constants.GAME_STATE.YOUR_TURN then
-
+      
+      game.endTurnSFX:play()
       -- Flip player cards to back
       for _, pile in ipairs(self.piles) do
         if pile.type == "board" and pile.owner == "player" then
@@ -450,7 +455,8 @@ function GameManager:handleTitleScreenClick(x, y)
   -- Check if start button was clicked
   if x >= self.startButton.x and x <= self.startButton.x + self.startButton.width and
      y >= self.startButton.y and y <= self.startButton.y + self.startButton.height then
-    self:startGame()
+      game.startSFX:play()
+      self:startGame()
   end
 end
 
@@ -681,10 +687,12 @@ function GameManager:checkForWin()
   for _, score in ipairs(self.scores) do
     if score.owner == "player" and score.value >= 25 then
       self.winner = "player"
+      game.wonSFX:play()
       return true
     end
     if score.owner == "ai" and score.value >= 25 then
       self.winner = "ai"
+      game.loseSFX:play()
       return true
     end
   end

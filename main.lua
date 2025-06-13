@@ -17,7 +17,7 @@ local font
 
 function love.load()
   love.window.setMode(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT)
-  love.window.setTitle("Kairos (3CG)")
+  love.window.setTitle("Kairos")
   love.graphics.setBackgroundColor(background)
 
   font = love.graphics.newFont("assets/slkscr.ttf", 18)
@@ -26,7 +26,7 @@ function love.load()
   bgm = love.audio.newSource("assets/sfx/bgm.wav", "stream")
   bgm:setVolume(0.8)
   bgm:setLooping(true)
-  
+
   if not bgm:isPlaying() then
     love.audio.play(bgm)
   end
